@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    min-height: 100vh;
+    margin: 0;
+    background: #0b0d15;
+    color: #a2a5b3;
+}
+
+.card {
+    margin: 0 auto;
+    padding: 2em;
+    width: 500px;
+    background: #1c1f2b;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.card::after, .card::before {
+    content: '';
+    position: absolute;
+    height: 102%;
+    width: 101%;
+    background-image: conic-gradient(from var(--angle), #ff4545, #00ff99, #006aff, #ff0095, #ff4545);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    border-radius: 10px;
+    animation: spin 3s linear infinite;
+}
+
+.card::before {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg;
+    }
+    to {
+        --angle: 360deg;
+    }
+}
+
+h1 {
+    margin: 0 0 20px;
+    text-align: center;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px; /* More rounded corners for input */
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #28a745;
+    color: #fff;
+    border-radius: 20px; /* More rounded corners for the button */
+    cursor: pointer;
+    margin-left: 20px;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+button:hover {
+    background-color: #218838;
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #007bff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #000; /* Black background for notes */
+    color: #fff; /* White text for notes */
+    border-radius: 10px; /* Rounded corners for notes */
+    margin-bottom: 10px; /* Space between notes */
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 15px; /* More rounded corners for delete button */
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.9s, transform 0.3s; /* Smooth transition for hover effects */
+}
+
+.delete-btn:hover {
+    background: #c82333;
+    transform: scale(1.1); /* Slightly enlarge delete button on hover */
+}
